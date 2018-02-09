@@ -437,6 +437,7 @@ type loggingT struct {
 	// used to synchronize logging.
 	mu sync.Mutex
 	// file holds writer for each of the log types.
+	// notes: use flushSyncWriter interface here so that it can be tested with flushBuffer in glog_test.go
 	file [numSeverity]flushSyncWriter
 	// pcs is used in V to avoid an allocation when computing the caller's PC.
 	pcs [1]uintptr
